@@ -1,26 +1,25 @@
-package strsuppt
+package strsuppt_test
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/tabakazu/strsuppt"
+)
 
 func TestCapitalize(t *testing.T) {
-	type args struct {
-		s string
-	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		in  string
+		out string
 	}{
-		{"", args{s: "taba"}, "Taba"},
-		{"", args{s: "taba san"}, "Taba san"},
-		{"", args{s: "taba san san"}, "Taba san san"},
-		{"", args{s: "0san"}, "0san"},
+		{"taba", "Taba"},
+		{"taba san", "Taba san"},
+		{"taba san san", "Taba san san"},
+		{"0san", "0san"},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := Capitalize(tt.args.s); got != tt.want {
-				t.Errorf("Capitalize() = %v, want %v", got, tt.want)
-			}
-		})
+	for _, test := range tests {
+		out := strsuppt.Capitalize(test.in)
+		if test.out != out {
+			t.Errorf("Capitalize(%s) = %s, want %s", test.in, out, test.out)
+		}
 	}
 }
