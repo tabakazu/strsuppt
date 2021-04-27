@@ -1,9 +1,7 @@
-package strsuppt_test
+package strsuppt
 
 import (
 	"testing"
-
-	"github.com/tabakazu/strsuppt"
 )
 
 func TestCamelize(t *testing.T) {
@@ -15,7 +13,7 @@ func TestCamelize(t *testing.T) {
 		{"string_support support", "StringSupport Support"},
 	}
 	for _, test := range tests {
-		out := strsuppt.Camelize(test.in)
+		out := Camelize(test.in)
 		if test.out != out {
 			t.Errorf("Camelize(%s) = %s, want %s", test.in, out, test.out)
 		}

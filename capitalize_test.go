@@ -1,9 +1,7 @@
-package strsuppt_test
+package strsuppt
 
 import (
 	"testing"
-
-	"github.com/tabakazu/strsuppt"
 )
 
 func TestCapitalize(t *testing.T) {
@@ -17,7 +15,7 @@ func TestCapitalize(t *testing.T) {
 		{"0san", "0san"},
 	}
 	for _, test := range tests {
-		out := strsuppt.Capitalize(test.in)
+		out := Capitalize(test.in)
 		if test.out != out {
 			t.Errorf("Capitalize(%s) = %s, want %s", test.in, out, test.out)
 		}
