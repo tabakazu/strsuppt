@@ -10,7 +10,7 @@ func TestCamelize(t *testing.T) {
 		out string
 	}{
 		{"string_support", "StringSupport"},
-		{"string_support support", "StringSupport Support"},
+		{"string_support/support", "StringSupport::Support"},
 	}
 	for _, test := range tests {
 		out := Camelize(test.in)
