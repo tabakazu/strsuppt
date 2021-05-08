@@ -37,3 +37,19 @@ func TestCapitalize(t *testing.T) {
 		}
 	}
 }
+
+func TestUnderscore(t *testing.T) {
+	tests := []struct {
+		in  string
+		out string
+	}{
+		{"StringSupport", "string_support"},
+		{"StringSupport::Support", "string_support/support"},
+	}
+	for _, test := range tests {
+		out := Underscore(test.in)
+		if test.out != out {
+			t.Errorf("Underscore(%s) = %s, want %s", test.in, out, test.out)
+		}
+	}
+}
