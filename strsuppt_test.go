@@ -53,3 +53,29 @@ func TestUnderscore(t *testing.T) {
 		}
 	}
 }
+
+func TestOrdinal(t *testing.T) {
+	tests := []struct {
+		in  string
+		out string
+	}{
+		{"1", "st"},
+		{"-1", "st"},
+		{"21", "st"},
+		{"2", "nd"},
+		{"102", "nd"},
+		{"3", "rd"},
+		{"443", "rd"},
+		{"4", "th"},
+		{"11", "th"},
+		{"-444", "th"},
+		{"first", "first"},
+		{"a1", "a1"},
+	}
+	for _, test := range tests {
+		out := Ordinal(test.in)
+		if test.out != out {
+			t.Errorf("Ordinal(%s) = %s, want %s", test.in, out, test.out)
+		}
+	}
+}

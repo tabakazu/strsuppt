@@ -2,6 +2,7 @@ package strsuppt
 
 import (
 	"regexp"
+	"strconv"
 	"strings"
 )
 
@@ -36,4 +37,32 @@ func Underscore(s string) string {
 	s = strings.Replace(s, "::", "/", -1)
 	s = strings.Replace(s, "/_", "/", -1)
 	return s
+}
+
+// Ordinal returns suffix of number to denote the position in an ordered
+func Ordinal(s string) string {
+	if _, err := strconv.Atoi(s); err != nil {
+		return s
+	}
+	switch s {
+	case "1":
+		return "st"
+	case "2":
+		return "nd"
+	case "3":
+		return "rd"
+	case "4", "5", "6", "7", "8", "9", "10", "11", "12", "13":
+		return "th"
+	default:
+		switch s[len(s)-1:] {
+		case "1":
+			return "st"
+		case "2":
+			return "nd"
+		case "3":
+			return "rd"
+		default:
+			return "th"
+		}
+	}
 }
