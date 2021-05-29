@@ -42,7 +42,7 @@ func Underscore(s string) string {
 // Ordinal returns suffix of number to denote the position in an ordered
 func Ordinal(s string) string {
 	if _, err := strconv.Atoi(s); err != nil {
-		return s
+		return ""
 	}
 	switch s {
 	case "1":
@@ -65,4 +65,8 @@ func Ordinal(s string) string {
 			return "th"
 		}
 	}
+}
+
+func Ordinalize(s string) string {
+	return s + Ordinal(s)
 }

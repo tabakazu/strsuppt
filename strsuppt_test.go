@@ -69,13 +69,39 @@ func TestOrdinal(t *testing.T) {
 		{"4", "th"},
 		{"11", "th"},
 		{"-444", "th"},
-		{"first", "first"},
-		{"a1", "a1"},
+		{"first", ""},
+		{"a1", ""},
 	}
 	for _, test := range tests {
 		out := Ordinal(test.in)
 		if test.out != out {
 			t.Errorf("Ordinal(%s) = %s, want %s", test.in, out, test.out)
+		}
+	}
+}
+
+func TestOrdinalize(t *testing.T) {
+	tests := []struct {
+		in  string
+		out string
+	}{
+		{"1", "1st"},
+		{"-1", "-1st"},
+		{"21", "21st"},
+		{"2", "2nd"},
+		{"102", "102nd"},
+		{"3", "3rd"},
+		{"443", "443rd"},
+		{"4", "4th"},
+		{"11", "11th"},
+		{"-444", "-444th"},
+		{"first", "first"},
+		{"a1", "a1"},
+	}
+	for _, test := range tests {
+		out := Ordinalize(test.in)
+		if test.out != out {
+			t.Errorf("Ordinalize(%s) = %s, want %s", test.in, out, test.out)
 		}
 	}
 }
