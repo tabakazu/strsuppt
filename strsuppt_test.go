@@ -105,3 +105,19 @@ func TestOrdinalize(t *testing.T) {
 		}
 	}
 }
+
+func TestDasherize(t *testing.T) {
+	tests := []struct {
+		in  string
+		out string
+	}{
+		{"foo_bar", "foo-bar"},
+		{"__", "--"},
+	}
+	for _, test := range tests {
+		out := Dasherize(test.in)
+		if test.out != out {
+			t.Errorf("Dasherize(%s) = %s, want %s", test.in, out, test.out)
+		}
+	}
+}

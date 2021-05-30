@@ -70,3 +70,8 @@ func Ordinal(s string) string {
 func Ordinalize(s string) string {
 	return s + Ordinal(s)
 }
+
+// Dasherize returns replace underscore to dash in string
+func Dasherize(s string) string {
+	return strings.ReplaceAll(s, "_", "-")
+}
