@@ -75,3 +75,11 @@ func Ordinalize(s string) string {
 func Dasherize(s string) string {
 	return strings.ReplaceAll(s, "_", "-")
 }
+
+func Deconstantize(s string) string {
+	idx := strings.LastIndex(s, "::")
+	if idx < 0 {
+		return ""
+	}
+	return s[0:idx]
+}

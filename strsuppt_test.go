@@ -121,3 +121,22 @@ func TestDasherize(t *testing.T) {
 		}
 	}
 }
+
+func TestDeconstantize(t *testing.T) {
+	tests := []struct {
+		in  string
+		out string
+	}{
+		{"Net::HTTP", "Net"},
+		{"::Net::HTTP", "::Net"},
+		{"String", ""},
+		{"::String", ""},
+		{"", ""},
+	}
+	for _, test := range tests {
+		out := Deconstantize(test.in)
+		if test.out != out {
+			t.Errorf("Deconstantize(%s) = %s, want %s", test.in, out, test.out)
+		}
+	}
+}
