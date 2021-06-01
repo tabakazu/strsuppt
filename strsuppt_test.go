@@ -140,3 +140,21 @@ func TestDeconstantize(t *testing.T) {
 		}
 	}
 }
+
+func TestDemodulize(t *testing.T) {
+	tests := []struct {
+		in  string
+		out string
+	}{
+		{"StringSupport::Foo::Foos", "Foos"},
+		{"Foos", "Foos"},
+		{"::Foos", "Foos"},
+		{"", ""},
+	}
+	for _, test := range tests {
+		out := Demodulize(test.in)
+		if test.out != out {
+			t.Errorf("Demodulize(\"%s\") = %s, want %s", test.in, out, test.out)
+		}
+	}
+}

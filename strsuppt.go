@@ -83,3 +83,11 @@ func Deconstantize(s string) string {
 	}
 	return s[0:idx]
 }
+
+func Demodulize(s string) string {
+	idx := strings.LastIndex(s, "::")
+	if idx < 0 {
+		return s
+	}
+	return s[idx+2 : len(s)]
+}
