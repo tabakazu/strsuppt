@@ -18,6 +18,7 @@ func Camelize(s string) string {
 	return str
 }
 
+// Capitalize returns upper case to first character
 func Capitalize(s string) string {
 	first := string(s[0])
 	return strings.Replace(s, first, strings.Title(first), 1)
@@ -67,6 +68,7 @@ func Ordinal(s string) string {
 	}
 }
 
+// Ordinalize returns add suffix of number to string
 func Ordinalize(s string) string {
 	return s + Ordinal(s)
 }
@@ -76,6 +78,7 @@ func Dasherize(s string) string {
 	return strings.ReplaceAll(s, "_", "-")
 }
 
+// Deconstantize returns removes rightmost segment from string
 func Deconstantize(s string) string {
 	idx := strings.LastIndex(s, "::")
 	if idx < 0 {
@@ -84,6 +87,7 @@ func Deconstantize(s string) string {
 	return s[0:idx]
 }
 
+// Demodulize returns removes module part from string
 func Demodulize(s string) string {
 	idx := strings.LastIndex(s, "::")
 	if idx < 0 {
